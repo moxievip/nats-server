@@ -317,7 +317,7 @@ func (s *Server) startRaftNode(cfg *RaftConfig) (RaftNode, error) {
 	if err != nil {
 		return nil, err
 	}
-	if ps == nil || ps.clusterSize < 2 {
+	if ps == nil || len(ps.knownPeers) < 2 {
 		return nil, errors.New("raft: cluster too small")
 	}
 
